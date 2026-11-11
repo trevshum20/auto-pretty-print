@@ -1,0 +1,190 @@
+html[data-auto-pretty-print] {
+  --json-bg: light-dark(#fff, #0d1117);
+  --json-text: light-dark(#24292f, #e6edf3);
+  --json-hover: light-dark(#eaeef2, #30363d);
+  --json-key: light-dark(#0550ae, #79c0ff);
+  --json-string: light-dark(#116329, #a5d6a7);
+  --json-number: light-dark(#953800, #ffa657);
+  --json-boolean: light-dark(#8250df, #d2a8ff);
+  --json-null: light-dark(#6e5865, #b6bac3);
+  color-scheme: light dark;
+  background: var(--json-bg);
+  color: var(--json-text);
+}
+
+html[data-auto-pretty-print="dark"] { color-scheme: dark; }
+html[data-auto-pretty-print="light"] { color-scheme: light; }
+
+/* Light/dark adaptations; palette changes never rebuild the JSON document. */
+html[data-auto-pretty-print][data-json-palette="nord"] {
+  --json-bg: light-dark(#eceff4, #2e3440);
+  --json-text: light-dark(#2e3440, #eceff4);
+  --json-hover: light-dark(#d8dee9, #434c5e);
+  --json-key: light-dark(#2e5e79, #88c0d0);
+  --json-string: light-dark(#3e633c, #a3be8c);
+  --json-number: light-dark(#6d4c80, #c2a1bb);
+  --json-boolean: light-dark(#7a5a00, #ebcb8b);
+  --json-null: light-dark(#914d2e, #dc9d86);
+}
+
+html[data-auto-pretty-print][data-json-palette="dracula"] {
+  --json-bg: light-dark(#fffbeb, #282a36);
+  --json-text: light-dark(#1f1f1f, #f8f8f2);
+  --json-hover: light-dark(#ebe5d2, #44475a);
+  --json-key: light-dark(#644ac9, #bd93f9);
+  --json-string: light-dark(#14710a, #50fa7b);
+  --json-number: light-dark(#a34d14, #ffb86c);
+  --json-boolean: light-dark(#a3144d, #ff79c6);
+  --json-null: light-dark(#036a96, #8be9fd);
+}
+
+html[data-auto-pretty-print][data-json-palette="catppuccin"] {
+  --json-bg: light-dark(#eff1f5, #1e1e2e);
+  --json-text: light-dark(#4c4f69, #cdd6f4);
+  --json-hover: light-dark(#ccd0da, #313244);
+  --json-key: light-dark(#195bd8, #89b4fa);
+  --json-string: light-dark(#2e7420, #a6e3a1);
+  --json-number: light-dark(#9e4a0c, #fab387);
+  --json-boolean: light-dark(#8839ef, #cba6f7);
+  --json-null: light-dark(#d20f39, #f38ba8);
+}
+
+html[data-auto-pretty-print][data-json-palette="ocean"] {
+  --json-bg: light-dark(#f0f9fc, #071e2b);
+  --json-text: light-dark(#173e50, #d6eff7);
+  --json-hover: light-dark(#dceff6, #143647);
+  --json-key: light-dark(#005b96, #64c7ff);
+  --json-string: light-dark(#006f69, #72e3cb);
+  --json-number: light-dark(#8b4b0f, #ffca80);
+  --json-boolean: light-dark(#7040a0, #c5a0ff);
+  --json-null: light-dark(#80536b, #d9a7c7);
+}
+
+html[data-auto-pretty-print][data-json-palette="sunset"] {
+  --json-bg: light-dark(#fff5ed, #281523);
+  --json-text: light-dark(#573144, #fbe5d8);
+  --json-hover: light-dark(#ffe7d7, #432438);
+  --json-key: light-dark(#a32f4b, #ff8f9c);
+  --json-string: light-dark(#8c4c00, #ffd080);
+  --json-number: light-dark(#7d3bb3, #d5a1ff);
+  --json-boolean: light-dark(#006e76, #79d4d9);
+  --json-null: light-dark(#81583a, #d8b6a0);
+}
+
+html[data-auto-pretty-print][data-json-palette="forest"] {
+  --json-bg: light-dark(#f2f8ef, #112019);
+  --json-text: light-dark(#263d2c, #e0eee1);
+  --json-hover: light-dark(#dfebd9, #263b2b);
+  --json-key: light-dark(#2d672b, #95d487);
+  --json-string: light-dark(#006763, #79d5bc);
+  --json-number: light-dark(#905021, #e8b67b);
+  --json-boolean: light-dark(#774278, #ccaaed);
+  --json-null: light-dark(#5c6755, #adbba2);
+}
+
+html[data-auto-pretty-print][data-json-palette="candy"] {
+  --json-bg: light-dark(#fff4fb, #251629);
+  --json-text: light-dark(#512944, #f4def1);
+  --json-hover: light-dark(#f9dfef, #422b46);
+  --json-key: light-dark(#a52872, #ff91d0);
+  --json-string: light-dark(#146e80, #85deed);
+  --json-number: light-dark(#8c440d, #ffd08b);
+  --json-boolean: light-dark(#6e3fba, #c6a5ff);
+  --json-null: light-dark(#68602c, #d8d293);
+}
+
+html[data-auto-pretty-print][data-json-palette="halloween"] {
+  --json-bg: light-dark(#fff6ea, #1c1426);
+  --json-text: light-dark(#432934, #f8e6d2);
+  --json-hover: light-dark(#ffe6c7, #36223e);
+  --json-key: light-dark(#aa4800, #ffad56);
+  --json-string: light-dark(#6840a8, #c49bff);
+  --json-number: light-dark(#386323, #a7d86d);
+  --json-boolean: light-dark(#a3245f, #ff88bf);
+  --json-null: light-dark(#635640, #c6b89f);
+}
+
+html[data-auto-pretty-print][data-json-palette="christmas"] {
+  --json-bg: light-dark(#fff8f0, #141f1c);
+  --json-text: light-dark(#442f2a, #f3ece0);
+  --json-hover: light-dark(#f2e7d7, #2b3b31);
+  --json-key: light-dark(#ae2635, #ff8e97);
+  --json-string: light-dark(#16613d, #85d3a5);
+  --json-number: light-dark(#856000, #e8cb7b);
+  --json-boolean: light-dark(#743c91, #cfa6ed);
+  --json-null: light-dark(#476679, #a2c9df);
+}
+
+html[data-auto-pretty-print][data-json-palette="harvest"] {
+  --json-bg: light-dark(#fff7e8, #271b13);
+  --json-text: light-dark(#4b3522, #f8e7d0);
+  --json-hover: light-dark(#f1e2c6, #433020);
+  --json-key: light-dark(#9d4415, #f4a261);
+  --json-string: light-dark(#52631b, #b9ce79);
+  --json-number: light-dark(#9b293a, #ef9a9a);
+  --json-boolean: light-dark(#775194, #c9a1db);
+  --json-null: light-dark(#77622f, #dac58b);
+}
+
+html[data-auto-pretty-print][data-json-palette="winter"] {
+  --json-bg: light-dark(#f4f8ff, #141d30);
+  --json-text: light-dark(#2f3f58, #e3ebf8);
+  --json-hover: light-dark(#e4ecf8, #28364e);
+  --json-key: light-dark(#245b9c, #9fcbff);
+  --json-string: light-dark(#306777, #8fd1d9);
+  --json-number: light-dark(#72449c, #c6afff);
+  --json-boolean: light-dark(#8c3f67, #edabd2);
+  --json-null: light-dark(#5d6672, #b2bdce);
+}
+
+html[data-auto-pretty-print] > body > pre.auto-pretty-print {
+  margin: 16px;
+  font: 14px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace;
+  white-space: pre;
+  overflow-wrap: normal;
+  word-break: normal;
+  tab-size: 2;
+}
+
+html[data-auto-pretty-print] > body > pre.auto-pretty-print.json-compact {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+html[data-auto-pretty-print] .auto-pretty-print-controls {
+  position: sticky;
+  top: 24px;
+  margin: 24px 16px 0;
+  padding: 6px 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: var(--json-bg);
+  font: 12px/1.5 system-ui, sans-serif;
+}
+
+html[data-auto-pretty-print] .auto-pretty-print-controls select { font: inherit; }
+
+pre.auto-pretty-print .json-toggle {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  user-select: text;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+
+pre.auto-pretty-print .json-toggle:hover { background: var(--json-hover); }
+pre.auto-pretty-print .json-collapsed > .json-contents { display: none; }
+pre.auto-pretty-print .json-collapsed > .json-toggle::after { content: " … "; }
+
+pre.auto-pretty-print .json-key { color: var(--json-key); }
+pre.auto-pretty-print .json-string { color: var(--json-string); }
+pre.auto-pretty-print .json-number { color: var(--json-number); }
+pre.auto-pretty-print .json-boolean { color: var(--json-boolean); }
+pre.auto-pretty-print .json-null { color: var(--json-null); }

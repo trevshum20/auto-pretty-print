@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Pretty Print JSON",
+  "version": "1.0.0",
+  "description": "Automatically format and safely highlight standalone JSON documents.",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
