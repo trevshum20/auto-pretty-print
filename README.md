@@ -7,6 +7,7 @@ that automatically formats standalone JSON. No dependencies or build step.
 
 - Two-space indentation and highlighting for keys, strings, numbers, booleans, and `null`.
 - **Compact** checkbox: single-line JSON that wraps visually without adding line breaks when copied.
+- **Copy** icon button or **Command+Option+X**: copies complete JSON in the current format, including folded values, without toolbar text. Shows “Copied!” or “Copy failed”.
 - Click an underlined `{` or `[` to collapse or expand an object or array.
 - **Theme**: System (follows your laptop), Dark, or Light.
 - **Palette**: Classic, Nord, Dracula, Catppuccin, Ocean, Sunset, Forest, Candy, Halloween, Christmas, Harvest, or Winter.
@@ -45,11 +46,17 @@ Open `http://127.0.0.1:8080/object`. If the port is busy, use
 | `/invalid`, `/empty`, `/plain`, `/xml`, `/html` | Original pages stay unchanged. |
 | `/long` | Compact wrapping and single-line copying; scrolling in formatted view. |
 
-Try the Compact checkbox, nested folds, and each palette in both themes.
+Try the Compact checkbox, nested folds, and each palette in both themes. Use
+**Copy** in both formats, including with folded containers; paste into a text editor
+and verify complete JSON with no toolbar labels or ellipses. On macOS, also test
+**Command+Option+X** with the JSON page focused. It uses the same Copy action
+and is active only on pages formatted by the extension, not in the address bar
+or other apps. Held keys do not repeatedly copy.
 DevTools Network should show only navigation and any browser favicon request;
 HTML-like strings must not trigger alerts, images, or `/unexpected` requests.
 
 Headless Chromium checks covered formatting, folding, compact selection/wrapping,
+clipboard copying (including folded values, HTTP fallback, and failure feedback),
 page exclusions, safe rendering, native controls, and all 24 palette/theme combinations.
 Interactive installation and clipboard behavior in your browser can be checked manually.
 
@@ -62,6 +69,6 @@ changing site data. Site access can be restricted in the extension's details.
 
 - Detection uses `document.contentType` and Chromium's plain JSON layout. Incorrect MIME types and unfamiliar layouts are skipped, as are HTML, XML, plain text, iframes, downloads, and non-HTTP(S) URLs.
 - Chromium's native pretty-print checkbox is retained. Toggling it can remove highlighting and folding; toggle **Compact** on/off or refresh to restore them. Other JSON viewers may conflict.
-- Copying collapsed content may omit hidden values. Expand it or use **Compact** to copy the complete JSON.
+- Manual text selection may omit folded values. The **Copy** action always includes them. It writes plain text only after a click or the shortcut and never reads your clipboard. A copy-event fallback supports plain HTTP; browser policies can still block copying.
 - `JSON.parse()` / `JSON.stringify()` normalize formatting, duplicate keys, property order, and numbers. Large numbers may lose precision or exceed JavaScript's range. The original HTTP response is never changed.
 - Very large documents may briefly block the tab.

@@ -139,5 +139,66 @@
   });
   paletteLabel.append(palette);
   controls.append(paletteLabel);
+
+  const copy = document.createElement("button");
+  copy.type = "button";
+  copy.className = "auto-pretty-print-copy";
+  copy.title = "Copy complete JSON in the current format (⌘⌥X)";
+  copy.setAttribute("aria-keyshortcuts", "Meta+Alt+X");
+  const copyIcon = document.createElement("span");
+  copyIcon.className = "json-copy-icon";
+  copyIcon.setAttribute("aria-hidden", "true");
+  const copyStatus = document.createElement("span");
+  copyStatus.textContent = "Copy";
+  copyStatus.setAttribute("aria-live", "polite");
+  copy.append(copyIcon, copyStatus);
+  let copyReset;
+  copy.addEventListener("click", async () => {
+    clearTimeout(copyReset);
+    copy.disabled = true;
+    try {
+      // textContent includes folded values, but excludes CSS ellipses and controls.
+      await copyText(pre.textContent);
+      copyStatus.textContent = "Copied!";
+    } catch {
+      copyStatus.textContent = "Copy failed";
+    } finally {
+      copy.disabled = false;
+      copyReset = setTimeout(() => { copyStatus.textContent = "Copy"; }, 2000);
+    }
+  });
+  controls.append(copy);
   body.prepend(controls);
+
+  document.addEventListener("keydown", event => {
+    if (event.defaultPrevented || event.isComposing || event.code !== "KeyX" ||
+        !event.metaKey || !event.altKey || event.ctrlKey || event.shiftKey) return;
+    event.preventDefault();
+    if (!event.repeat && !copy.disabled) copy.click();
+  }, true);
+
+  async function copyText(text) {
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return;
+      } catch {
+        // Fall back to a user-initiated copy event, also supported on plain HTTP.
+      }
+    }
+    let copied = false;
+    const onCopy = event => {
+      event.clipboardData.setData("text/plain", text);
+      event.preventDefault();
+      copied = true;
+    };
+    document.addEventListener("copy", onCopy);
+    try {
+      if (!document.execCommand("copy") || !copied) {
+        throw new Error("Clipboard unavailable");
+      }
+    } finally {
+      document.removeEventListener("copy", onCopy);
+    }
+  }
 })();

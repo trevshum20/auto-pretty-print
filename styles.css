@@ -167,6 +167,41 @@ html[data-auto-pretty-print] .auto-pretty-print-controls {
 
 html[data-auto-pretty-print] .auto-pretty-print-controls select { font: inherit; }
 
+html[data-auto-pretty-print] .auto-pretty-print-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 7px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: var(--json-bg);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+html[data-auto-pretty-print] .auto-pretty-print-copy:hover { background: var(--json-hover); }
+html[data-auto-pretty-print] .auto-pretty-print-copy:disabled { opacity: 0.6; }
+
+html[data-auto-pretty-print] .json-copy-icon {
+  position: relative;
+  width: 14px;
+  height: 15px;
+}
+
+html[data-auto-pretty-print] .json-copy-icon::before,
+html[data-auto-pretty-print] .json-copy-icon::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 10px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  background: var(--json-bg);
+}
+
+html[data-auto-pretty-print] .json-copy-icon::after { left: 4px; top: 3px; }
+
 pre.auto-pretty-print .json-toggle {
   padding: 0;
   border: 0;
