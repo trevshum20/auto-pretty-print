@@ -1,0 +1,219 @@
+<div id="json-refresh-options" aria-label="JSON refresh animation comparison">
+  <style>
+    #json-refresh-options {
+      --fx-bg: light-dark(#ffffff, #0d1117);
+      --fx-fg: light-dark(#24292f, #e6edf3);
+      --fx-muted: light-dark(#59636e, #a5aeb8);
+      --fx-border: light-dark(#d1d9e0, #3d444d);
+      --fx-hover: light-dark(#eef2f6, #252c35);
+      --fx-key: light-dark(#0550ae, #79c0ff);
+      --fx-string: light-dark(#116329, #a5d6a7);
+      --fx-number: light-dark(#953800, #ffa657);
+      --fx-purple: light-dark(#8250df, #d2a8ff);
+      --fx-null: light-dark(#6e5865, #b6bac3);
+      color-scheme: light dark;
+    }
+    #json-refresh-options .fx-preview {
+      box-sizing: border-box;
+      height: 420px;
+      padding: 16px;
+      border: 1px solid var(--fx-border);
+      border-radius: 8px;
+      background: var(--fx-bg);
+      color: var(--fx-fg);
+      font: 14px/1.5 system-ui, sans-serif;
+    }
+    #json-refresh-options .fx-toolbar,
+    #json-refresh-options .fx-settings {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    #json-refresh-options .fx-settings { margin: 16px 0 8px; }
+    #json-refresh-options .fx-settings label { display: inline-flex; align-items: center; gap: 6px; }
+    #json-refresh-options .fx-replay {
+      padding: 5px 10px;
+      border: 1px solid var(--fx-border);
+      border-radius: 5px;
+      background: var(--fx-bg);
+      color: var(--fx-fg);
+      font: inherit;
+      cursor: pointer;
+    }
+    #json-refresh-options .fx-replay:hover { background: var(--fx-hover); }
+    #json-refresh-options .fx-settings input { accent-color: var(--fx-key); }
+    #json-refresh-options .fx-url { font-family: ui-monospace, monospace; }
+    #json-refresh-options .fx-stamp { color: var(--fx-muted); font-size: 12px; }
+    #json-refresh-options .fx-scene {
+      position: relative;
+      overflow: hidden;
+      height: 278px;
+    }
+    #json-refresh-options .fx-code {
+      padding: 12px 10px;
+      font: 14px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace;
+      transform-origin: center center;
+    }
+    #json-refresh-options .fx-line { white-space: pre; transform-origin: left center; }
+    #json-refresh-options .fx-key { color: var(--fx-key); }
+    #json-refresh-options .fx-string { color: var(--fx-string); }
+    #json-refresh-options .fx-number { color: var(--fx-number); }
+    #json-refresh-options .fx-boolean { color: var(--fx-purple); }
+    #json-refresh-options .fx-null { color: var(--fx-null); }
+    #json-refresh-options .fx-band,
+    #json-refresh-options .fx-ring {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+    }
+    #json-refresh-options .fx-band { inset: 0; }
+    #json-refresh-options .fx-ring {
+      top: 50%; left: 50%; width: 64px; height: 64px;
+      border: 2px solid var(--fx-key);
+      border-radius: 50%;
+    }
+    @media (max-width: 420px) {
+      #json-refresh-options .fx-preview { padding: 12px; }
+      #json-refresh-options .fx-code { padding: 12px 4px; font-size: 13px; }
+    }
+    @media (pointer: coarse) {
+      #json-refresh-options .fx-replay,
+      #json-refresh-options .fx-settings label { min-height: 44px; }
+    }
+  </style>
+  <div class="viz-carousel viz-dotted-background" aria-label="Refresh animation options">
+    <section data-variant="Text wave" aria-label="Text wave refresh">
+      <div class="fx-preview" data-effect="wave">
+        <div class="fx-toolbar"><span class="fx-url">GET /api/team</span><button class="fx-replay" type="button">Replay refresh</button></div>
+        <div class="fx-settings"><label><input type="checkbox" checked> Animation</label><span class="fx-stamp" aria-live="polite">Ready</span></div>
+        <div class="fx-scene"><div class="fx-code" aria-label="Sample JSON response"></div><div class="fx-band" aria-hidden="true"></div><div class="fx-ring" aria-hidden="true"></div></div>
+      </div>
+    </section>
+    <section data-variant="Shimmer sweep" aria-label="Shimmer sweep refresh" hidden>
+      <div class="fx-preview" data-effect="shimmer">
+        <div class="fx-toolbar"><span class="fx-url">GET /api/team</span><button class="fx-replay" type="button">Replay refresh</button></div>
+        <div class="fx-settings"><label><input type="checkbox" checked> Animation</label><span class="fx-stamp" aria-live="polite">Ready</span></div>
+        <div class="fx-scene"><div class="fx-code" aria-label="Sample JSON response"></div><div class="fx-band" aria-hidden="true"></div><div class="fx-ring" aria-hidden="true"></div></div>
+      </div>
+    </section>
+    <section data-variant="Ripple" aria-label="Ripple refresh" hidden>
+      <div class="fx-preview" data-effect="ripple">
+        <div class="fx-toolbar"><span class="fx-url">GET /api/team</span><button class="fx-replay" type="button">Replay refresh</button></div>
+        <div class="fx-settings"><label><input type="checkbox" checked> Animation</label><span class="fx-stamp" aria-live="polite">Ready</span></div>
+        <div class="fx-scene"><div class="fx-code" aria-label="Sample JSON response"></div><div class="fx-band" aria-hidden="true"></div><div class="fx-ring" aria-hidden="true"></div></div>
+      </div>
+    </section>
+    <section data-variant="Soft pop" aria-label="Soft pop refresh" hidden>
+      <div class="fx-preview" data-effect="pop">
+        <div class="fx-toolbar"><span class="fx-url">GET /api/team</span><button class="fx-replay" type="button">Replay refresh</button></div>
+        <div class="fx-settings"><label><input type="checkbox" checked> Animation</label><span class="fx-stamp" aria-live="polite">Ready</span></div>
+        <div class="fx-scene"><div class="fx-code" aria-label="Sample JSON response"></div><div class="fx-band" aria-hidden="true"></div><div class="fx-ring" aria-hidden="true"></div></div>
+      </div>
+    </section>
+  </div>
+  <script>
+    (() => {
+      const root = document.getElementById('json-refresh-options');
+      const previous = window.openai?.widgetState || {};
+      const saved = previous.modelContent || {};
+      const duration = previous.privateContent?.duration;
+      const settings = { enabled: saved.animationEnabled !== false, duration: typeof duration === 'number' ? Math.max(500, Math.min(1400, duration)) : 950 };
+      const previews = [...root.querySelectorAll('.fx-preview')];
+      const sample = JSON.stringify({ name: 'Naruto', team: { number: 7, members: ['Sasuke', 'Sakura'] }, active: true, mission: null }, null, 2);
+      let lastPreview = saved.lastPreview || null;
+
+      function remember() {
+        const promise = window.openai?.setWidgetState?.({ modelContent: { animationEnabled: settings.enabled, lastPreview }, privateContent: { duration: settings.duration } });
+        promise?.catch(() => {});
+      }
+      function applyEnabled() {
+        for (const preview of previews) {
+          preview.querySelector('input').checked = settings.enabled;
+          if (!settings.enabled) preview.querySelector('.fx-scene').getAnimations({ subtree: true }).forEach(animation => animation.cancel());
+        }
+      }
+      for (const preview of previews) {
+        const code = preview.querySelector('.fx-code');
+        for (const text of sample.split('\n')) {
+          const line = document.createElement('div');
+          line.className = 'fx-line';
+          const expression = /"(?:[^"\\]|\\.)*"\s*:|"(?:[^"\\]|\\.)*"|-?\d+|true|false|null/g;
+          let offset = 0;
+          for (const match of text.matchAll(expression)) {
+            line.append(document.createTextNode(text.slice(offset, match.index)));
+            const token = match[0];
+            const span = document.createElement('span');
+            const kind = token.startsWith('"') ? (token.endsWith(':') ? 'key' : 'string') : token === 'null' ? 'null' : /true|false/.test(token) ? 'boolean' : 'number';
+            span.className = 'fx-' + kind;
+            span.textContent = token;
+            line.append(span);
+            offset = match.index + token.length;
+          }
+          line.append(document.createTextNode(text.slice(offset)));
+          code.append(line);
+        }
+        preview.querySelector('input').addEventListener('change', event => {
+          settings.enabled = event.target.checked;
+          applyEnabled();
+          remember();
+        });
+        preview.querySelector('button').addEventListener('click', () => {
+          const scene = preview.querySelector('.fx-scene');
+          const band = preview.querySelector('.fx-band');
+          const ring = preview.querySelector('.fx-ring');
+          scene.getAnimations({ subtree: true }).forEach(animation => animation.cancel());
+          const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+          const stamp = preview.querySelector('.fx-stamp');
+          stamp.textContent = 'Rendered ' + new Date().toLocaleTimeString([], { hour12: false });
+          if (reduced) stamp.textContent += ' · reduced motion';
+          lastPreview = preview.dataset.effect;
+          remember();
+          if (!settings.enabled || reduced) return;
+          const duration = settings.duration;
+          const colors = getComputedStyle(root);
+          const blue = colors.getPropertyValue('--fx-key').trim();
+          const options = { duration, easing: 'ease-in-out' };
+          if (lastPreview === 'wave') {
+            const lines = [...code.children];
+            const pulse = duration * 0.48;
+            lines.forEach((line, index) => {
+              const timing = { duration: pulse, delay: index / Math.max(1, lines.length - 1) * (duration - pulse), easing: 'ease-in-out' };
+              line.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.055)' }, { transform: 'scale(1)' }], timing);
+              for (const token of line.children) {
+                const original = getComputedStyle(token).color;
+                token.animate([{ color: original }, { color: blue }, { color: original }], timing);
+              }
+            });
+            band.style.height = '64px';
+            band.style.width = '100%';
+            band.style.background = 'linear-gradient(transparent, color-mix(in srgb, var(--fx-key) 14%, transparent), color-mix(in srgb, var(--fx-purple) 12%, transparent), transparent)';
+            band.animate([{ transform: 'translateY(-70px)', opacity: 0 }, { opacity: 0.9, offset: 0.25 }, { opacity: 0.9, offset: 0.75 }, { transform: 'translateY(' + scene.clientHeight + 'px)', opacity: 0 }], options);
+          } else if (lastPreview === 'shimmer') {
+            band.style.height = '100%';
+            band.style.width = '35%';
+            band.style.background = 'linear-gradient(110deg, transparent, color-mix(in srgb, var(--fx-key) 14%, transparent), color-mix(in srgb, var(--fx-purple) 12%, transparent), transparent)';
+            band.animate([{ transform: 'translateX(-110%)', opacity: 0 }, { opacity: 1, offset: 0.2 }, { opacity: 1, offset: 0.8 }, { transform: 'translateX(400%)', opacity: 0 }], options);
+          } else if (lastPreview === 'ripple') {
+            ring.animate([{ transform: 'translate(-50%, -50%) scale(0.1)', opacity: 0.7 }, { transform: 'translate(-50%, -50%) scale(10)', opacity: 0 }], options);
+          } else {
+            code.animate([{ transform: 'scale(0.985)', opacity: 0.55 }, { transform: 'scale(1.012)', opacity: 1, offset: 0.65 }, { transform: 'scale(1)', opacity: 1 }], options);
+          }
+        });
+      }
+      applyEnabled();
+      window.addEventListener('openai:set_globals', event => {
+        const state = event.detail?.globals?.widgetState;
+        if (!state) return;
+        if (typeof state.modelContent?.animationEnabled === 'boolean') settings.enabled = state.modelContent.animationEnabled;
+        if (typeof state.privateContent?.duration === 'number') settings.duration = state.privateContent.duration;
+        applyEnabled();
+      });
+      if (globalThis.Tweak) {
+        const tweak = new Tweak({ container: root, onChange: remember });
+        tweak.addSlider(settings, 'duration', { label: 'Preview duration', min: 500, max: 1400, step: 100, unit: 'ms' });
+      }
+    })();
+  </script>
+</div>

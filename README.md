@@ -11,8 +11,11 @@ that automatically formats standalone JSON. No dependencies or build step.
 - Click an underlined `{` or `[` to collapse or expand an object or array.
 - **Theme**: System (follows your laptop), Dark, or Light.
 - **Palette**: Classic, Nord, Dracula, Catppuccin, Ocean, Sunset, Forest, Candy, Halloween, Christmas, Harvest, or Winter.
+- **Animation**: Text wave rolls through visible text in about 1.6 seconds, with 12% growth, a palette-color shift, and a soft glow. Choose **Shimmer** for the original sweep. Uncheck to disable; recheck to preview. Respects macOS Reduce Motion.
 
-All palettes support light and dark mode. Controls reset on reload; nothing is saved.
+All palettes support light and dark mode. Theme, Palette, Compact, and Animation preferences (including style)
+are saved locally for all sites and restored after reloads and browser restarts.
+JSON responses and folded-container states are never saved.
 Nord, Dracula, and Catppuccin are adaptations inspired by
 [Nord](https://www.nordtheme.com/docs/colors-and-palettes/),
 [Dracula/Alucard](https://github.com/dracula/dracula-theme#color-palette-oss), and
@@ -52,18 +55,30 @@ and verify complete JSON with no toolbar labels or ellipses. On macOS, also test
 **Command+Option+X** with the JSON page focused. It uses the same Copy action
 and is active only on pages formatted by the extension, not in the address bar
 or other apps. Held keys do not repeatedly copy.
+Change Theme, Palette, Compact, and Animation, then reload, open another JSON URL, and
+restart the browser to check that your preferences are restored.
+With Animation enabled, each refresh should play the selected effect once. Try
+both Text wave and Shimmer. Disabling Animation or enabling Reduce Motion should
+prevent either effect. Copying, folding, and compact wrapping should keep working.
 DevTools Network should show only navigation and any browser favicon request;
 HTML-like strings must not trigger alerts, images, or `/unexpected` requests.
 
 Headless Chromium checks covered formatting, folding, compact selection/wrapping,
 clipboard copying (including folded values, HTTP fallback, and failure feedback),
 page exclusions, safe rendering, native controls, and all 24 palette/theme combinations.
+Preference restoration was verified across reloads, different sites, and a full
+browser restart; only preference values were stored.
+Both effects were checked for cleanup, saved settings, and live Reduce Motion
+changes. Text-wave checks also covered text alignment, clipboard output, folding,
+compact wrapping, bounded work on large responses, and Shimmer fallback.
 Interactive installation and clipboard behavior in your browser can be checked manually.
 
 ## Privacy and limitations
 
-Everything runs locally using safe DOM APIs. No network calls, telemetry, storage,
-external assets, cookie/token access, or API permissions. Automatic operation requires
+Everything runs locally using safe DOM APIs. The only API permission is `storage`,
+used to save preferences in extension-local storage on this browser profile.
+JSON responses are never saved. There are no network calls, telemetry, external
+assets, or cookie/token access. Preferences do not sync to other computers. Automatic operation requires
 content-script access to all HTTP(S) sites, which Chrome may describe as reading and
 changing site data. Site access can be restricted in the extension's details.
 
@@ -72,3 +87,5 @@ changing site data. Site access can be restricted in the extension's details.
 - Manual text selection may omit folded values. The **Copy** action always includes them. It writes plain text only after a click or the shortcut and never reads your clipboard. A copy-event fallback supports plain HTTP; browser policies can still block copying.
 - `JSON.parse()` / `JSON.stringify()` normalize formatting, duplicate keys, property order, and numbers. Large numbers may lose precision or exceed JavaScript's range. The original HTTP response is never changed.
 - Very large documents may briefly block the tab.
+- Text wave uses temporary, noninteractive copies of up to 180 visible tokens, leaving JSON layout unchanged. It stops on interaction, scrolling, resizing, or content changes. Large wrapped values and unsuitable layouts fall back to Shimmer.
+- The animation confirms the JSON was rendered. A reload may still use a cached response; the extension does not force a new network request.

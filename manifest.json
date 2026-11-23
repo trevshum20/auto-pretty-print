@@ -3,6 +3,7 @@
   "name": "Auto Pretty Print JSON",
   "version": "1.0.0",
   "description": "Automatically format and safely highlight standalone JSON documents.",
+  "permissions": ["storage"],
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
